@@ -23,9 +23,10 @@ public class UserDB {
     private static void init() {
         try {
             Statement s = cn.createStatement();
-            ResultSet rs = s.executeQuery("select * from \"user\"");
+            ResultSet rs = s.executeQuery("select * from users");
             users = getDBUsers(rs);
         } catch (SQLException e) {
+            System.out.println("catch");
             e.printStackTrace();
         }
     }
@@ -48,7 +49,7 @@ public class UserDB {
         try {
             PreparedStatement ps =
                     cn.prepareStatement("INSERT INTO " +
-                            "\"user\"(username, password) " +
+                            "users(username, password) " +
                             "VALUES (?, ?)");
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
@@ -103,7 +104,7 @@ public class UserDB {
                 user = new User();
                 user.setId(rs.getInt(1));
                 user.setUsername(rs.getString(2));
-                user.setPassword(rs.getString(9));
+                user.setPassword(rs.getString(3));
                 users.add(user);
             }
         } catch (SQLException e) {

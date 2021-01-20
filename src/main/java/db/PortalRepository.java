@@ -26,6 +26,7 @@ public class PortalRepository {
             Context envCtx = (Context)initialContext.lookup("java:comp/env");
             DataSource ds = (DataSource)envCtx.lookup("jdbc/postgres");
             connection = ds.getConnection();
+            System.out.println("portal");
         }
         catch (NamingException | SQLException e)
         {

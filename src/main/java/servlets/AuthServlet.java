@@ -14,7 +14,6 @@ public class AuthServlet extends HttpServlet {
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
         resp.sendRedirect("main.jsp");
-        out.print("welcome ADMIN");
         out.close();
     }
 }
