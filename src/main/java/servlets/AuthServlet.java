@@ -10,10 +10,10 @@ import java.io.PrintWriter;
 
 public class AuthServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
-        resp.sendRedirect("main.jsp");
+        req.getRequestDispatcher("main.jsp").include(req, resp);
         out.close();
     }
 }

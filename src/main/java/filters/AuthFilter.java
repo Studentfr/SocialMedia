@@ -20,6 +20,7 @@ public class AuthFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("Opened AuthFilter");
         PrintWriter out = servletResponse.getWriter();
         HttpSession session = ((HttpServletRequest)servletRequest).getSession(false);
         String password = servletRequest.getParameter("password");

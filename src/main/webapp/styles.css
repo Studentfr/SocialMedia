@@ -1,0 +1,12 @@
+nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: burlywood;
+    width: 100%;
+}
+
+nav a {
+    padding: 10px;
+    background-color: beige;
+}
