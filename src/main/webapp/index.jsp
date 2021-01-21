@@ -24,4 +24,5 @@
     Password:<input type="password" name="password"/><br/>
     <input type="submit" value="login">
 </form>
+<a href="register.jsp">Registration</a>
 
