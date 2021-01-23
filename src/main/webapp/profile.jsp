@@ -12,6 +12,9 @@
     if (p != null) {%>
 <div>
     <h3>Username: <%=p.getUsername()%></h3>
+    <form action="${pageContext.request.contextPath}/SendReqServlet" method="get">
+        <input type="submit" value="send request">
+    </form>
 
     <h4>Posts:</h4>
 

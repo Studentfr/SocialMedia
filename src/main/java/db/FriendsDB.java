@@ -33,4 +33,8 @@ public class FriendsDB {
         }
         return false;
     }
+
+    public void sendRequest(){
+
+    }
 }

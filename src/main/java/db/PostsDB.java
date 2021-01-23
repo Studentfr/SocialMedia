@@ -112,4 +112,17 @@ public class PostsDB {
         }
         return null;
     }
+
+    public void addComment(String txt, int author_id, int post_id){
+        try {
+            PreparedStatement ps = cn.prepareStatement
+                    ("INSERT INTO comments (author_id, post_id, comment) VALUES (?, ?, ?)");
+            ps.setInt(1, author_id);
+            ps.setInt(2, post_id);
+            ps.setString(3, txt);
+            ps.executeUpdate();
+        } catch (Exception e){
+
+        }
+    }
 }
