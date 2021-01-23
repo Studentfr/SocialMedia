@@ -20,6 +20,9 @@
     </li>
     <%if (s != null) {%>
     <li class="nav-item">
+        <a class="nav-link" href="profile?id=<%=s.getId()%>">My Profile</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="addPost.jsp">Add Post</a>
     </li>
     <li class="nav-item">

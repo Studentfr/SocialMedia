@@ -1,5 +1,7 @@
 package db;
 
+import models.Post;
+import models.Profile;
 import models.User;
 
 import java.sql.*;
@@ -105,11 +107,26 @@ public class UserDB {
                 user.setId(rs.getInt(1));
                 user.setUsername(rs.getString(2));
                 user.setPassword(rs.getString(3));
+                user.setVisibility(rs.getInt(4));
                 users.add(user);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return users;
+    }
+
+    public Profile getProfileById(int id) {
+        try {
+            Profile p = new Profile();
+            User u = getUserById(id);
+            p.setUsername(u.getUsername());
+            p.setVisibility(u.getVisibility());
+            p.setPosts(PostsDB.getInstance().getPostsByUserId(id));
+            return p;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

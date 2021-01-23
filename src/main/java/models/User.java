@@ -1,8 +1,16 @@
 package models;
 
 public class User {
-    private int id;
+    private int id, visibility;
     private String username, password;
+
+    public int getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(int visibility) {
+        this.visibility = visibility;
+    }
 
     public String getPassword() {
         return password;
@@ -29,8 +37,7 @@ public class User {
     }
 
     public User copyWithoutPassword() {
-        User u = new User();
-        u.setId(id);
+        User u = this;
         u.setPassword("");
         return u;
     }

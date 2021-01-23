@@ -13,12 +13,13 @@
              posts) {
             %>
 <div>
-    <h4><%=p.getTitle()%></h4>
+    <a class="h4" href="post?id=<%=p.getId()%>"><%=p.getTitle()%></a>
+
     <p><%=p.getContent()%></p>
 </div>
 <%
         }
     %>
 <%} else {%>
-
+    <h1>No Posts Found or Accessible</h1>
 <%}%>

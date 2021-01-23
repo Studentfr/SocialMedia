@@ -2,6 +2,7 @@ package db;
 
 import javafx.geometry.Pos;
 import models.Post;
+import models.PostView;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -56,6 +57,58 @@ public class PostsDB {
             return posts;
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return null;
+    }
+
+    public PostView getPostViewById(int id) {
+        try {
+            PostView p = new PostView();
+            PreparedStatement ps = cn.prepareStatement("SELECT post_id, title, content, commentable, author_id " +
+                    "FROM posts WHERE post_id = ?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                p.setId(rs.getInt(1));
+                p.setTitle(rs.getString(2));
+                p.setContent(rs.getString(3));
+                p.setCommentable(rs.getBoolean(4));
+                p.setAuthorId(rs.getInt(5));
+            }
+            if (p.isCommentable()) {
+                ps = cn.prepareStatement("SELECT comment FROM comments WHERE post_id = ?");
+                ps.setInt(1, id);
+                ResultSet set = ps.executeQuery();
+                List<String> comments = new LinkedList<>();
+                while (set.next()) {
+                    comments.add(set.getString(1));
+                }
+                p.setComments(comments);
+            }
+            return p;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Post> getPostsByUserId(int id) {
+        try {
+            PreparedStatement ps = cn.prepareStatement("SELECT post_id, title, content FROM posts" +
+                    " WHERE author_id = ?");
+            ps.setInt(1, id);
+            List<Post> posts = new LinkedList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Post p = new Post();
+                p.setId(rs.getInt(1));
+                p.setTitle(rs.getString(2));
+                p.setContent(rs.getString(3));
+                posts.add(p);
+            }
+            return posts;
+        } catch (Exception e) {
+
         }
         return null;
     }
