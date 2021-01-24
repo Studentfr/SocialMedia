@@ -1,5 +1,8 @@
 package servlets;
 
+import db.FriendsDB;
+import models.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +17,9 @@ public class SendReqServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        int id = Integer.parseInt(request.getParameter("id"));
+        int senderId = ((User)request.getAttribute("user")).getId();
+        FriendsDB.getInstance().sendRequest(senderId, id);
+        response.sendRedirect("profile?id=" + id);
     }
 }

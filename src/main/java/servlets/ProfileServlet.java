@@ -26,6 +26,11 @@ public class ProfileServlet extends HttpServlet {
         boolean friendship = false;
         if (u != null) {
             friendship = FriendsDB.getInstance().isFriend(u.getId(), id);
+            if (!friendship) {
+                if (FriendsDB.getInstance().isFriendAcceptSent(u.getId(), id)) {
+                    request.setAttribute("friendRequest", true);
+                } else request.setAttribute("friendRequest", false);
+            }
         }
         request.setAttribute("friendship", friendship);
         request.getRequestDispatcher("profile.jsp").include(request, response);
