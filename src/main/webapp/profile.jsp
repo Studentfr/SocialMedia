@@ -11,11 +11,11 @@
     Profile p = (Profile) request.getAttribute("profile");
     if (p != null) {%>
 <div>
-    <h3>Username: <%=p.getUsername()%></h3>30000000000000000
-    <form action="SendReqServlet" method="post">30000000000000000
+    <h3>Username: <%=p.getUsername()%></h3>
+    <form action="SendReqServlet" method="post">
         <input type="hidden" value="<%=p.getId()%>" name="id">
         <% if ((Boolean)request.getAttribute("friendship") && (p.getId() != ((User)request.getSession().getAttribute("user")).getId())) {%>
-
+        <div>You are friends</div>
         <%} else if (request.getAttribute("friendRequest") != null && !(Boolean)request.getAttribute("friendRequest")) {%>
         <input type="submit" value="Send Request">
         <%} else if (request.getAttribute("friendRequest") != null && (Boolean)request.getAttribute("friendRequest")) {%>

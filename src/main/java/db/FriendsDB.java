@@ -36,8 +36,7 @@ public class FriendsDB {
 
     public void sendRequest(int senderId, int acceptorId){
         try {
-            PreparedStatement ps = cn.prepareStatement("INSERT INTO friends (uid1, uid2) " +
-                    "VALUES (?, ?)");
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO friends (uid1, uid2) VALUES (?, ?)");
             ps.setInt(1, senderId);
             ps.setInt(2, acceptorId);
             ps.executeUpdate();
