@@ -11,6 +11,6 @@
     Visibility: <br>
     Internet <input type="radio" name="visibility" value="0"> <br>
     Portal <input type="radio" name="visibility" value="1"> <br>
-    Friends  <input type="radio" name="visibility" value="0"> <br>
+    Friends  <input type="radio" name="visibility" value="2"> <br>
     <input type="submit" value="Add">
 </form>

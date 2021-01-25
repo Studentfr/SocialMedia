@@ -120,6 +120,7 @@ public class UserDB {
         try {
             Profile p = new Profile();
             User u = getUserById(id);
+            p.setId(u.getId());
             p.setUsername(u.getUsername());
             p.setVisibility(u.getVisibility());
             p.setPosts(PostsDB.getInstance().getPostsByUserId(id));

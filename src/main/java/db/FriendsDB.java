@@ -34,7 +34,27 @@ public class FriendsDB {
         return false;
     }
 
-    public void sendRequest(){
+    public void sendRequest(int senderId, int acceptorId){
+        try {
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO friends (uid1, uid2) VALUES (?, ?)");
+            ps.setInt(1, senderId);
+            ps.setInt(2, acceptorId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    public boolean isFriendAcceptSent(int senderId, int acceptorId) {
+        try {
+            PreparedStatement ps = cn.prepareStatement("SELECT * FROM friends WHERE uid1 = ? AND uid2 = ?");
+            ps.setInt(1, senderId);
+            ps.setInt(2, acceptorId);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

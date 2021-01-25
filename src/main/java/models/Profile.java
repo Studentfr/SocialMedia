@@ -3,9 +3,18 @@ package models;
 import java.util.List;
 
 public class Profile {
+    private int id;
     private String username;
     private List<Post> posts;
     private int visibility;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getVisibility() {
         return visibility;
